@@ -11,4 +11,8 @@ The procedure to run the experiments is described below
 
 **Step 3**: Run `anaylze_phrase_table.py` to get a unique phrase table which maps to the most probable target phrase.
 
-**Step 4**: Run 
+**Step 4**: Run `replace_sent_en.py` to replace a monolingual sentence with phrases in the source.
+
+Now use [fairseq scripts](https://github.com/bnjasim/research/blob/master/2019/05_may/fairseq_multi.sh) to train the model.
+
+We use `adam` optimizer. The detailed hyper-parameters are in the file: `fairseq_keep_training.sh`.
