@@ -11,7 +11,9 @@ The procedure to run the experiments is described below
 
 **Step 3**: Run `anaylze_phrase_table.py` to get a unique phrase table which maps to the most probable target phrase.
 
-**Step 4**: Run `replace_sent_en.py` to replace a monolingual sentence with phrases in the source.
+**Step 4**: Run `create_ngram_dict_pht.py` to create bigram & trigram dictionaries.
+
+**Step 5**: Run `replace_sent_en.py` to replace a monolingual sentence with phrases from these dictionaries.
 
 Now use [fairseq scripts](https://github.com/bnjasim/research/blob/master/2019/05_may/fairseq_multi.sh) to train the model.
 
