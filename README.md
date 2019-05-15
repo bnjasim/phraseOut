@@ -1,6 +1,8 @@
 # phraseOut
 Code Mixed Data Augmentation for NMT
 
+![phraseout_illustration.png](phraseout_illustration.png)
+
 ## 14 May 2019
 
 The procedure to run the experiments is described below
