@@ -1,10 +1,36 @@
 #!/bin/python3
 
+def is_char_in_hi_range(c):
+    '''hindi unicode range is 0900 - 097F
+       or 2304 - 2431 in integers'''
+    
+    lb = 2304
+    ub = 2431
+    ic = ord(c)
+    return (ic >= lb and ic <= ub)
+
+def is_char_ascii(c):
+    ic = ord(c)
+    return ic < 128
+
+def is_hindi(word):
+    '''Checks if a word is in Devanagari alphabets.
+    That means avoid numbers, NULL etc.'''
+    
+    return all([is_char_in_hi_range(c) or is_char_ascii(c) for c in word])
+
+def is_english(word):
+    '''Checks if a word is in ascii'''
+    
+    return all([is_char_ascii(c) for c in word])
+    
+
 prev = ''
 best_tgt = ''
 best_prob = 0
 outfile = open('unique-phrase-table', 'w', encoding='utf-8')
 count = 0
+patho = 0
 
 with open('phrase-table', encoding='utf-8') as f:
     for line in f:
@@ -13,6 +39,10 @@ with open('phrase-table', encoding='utf-8') as f:
         src = src.rstrip().lstrip()
         tgt = tgt.rstrip().lstrip()
         probs = probs.rstrip().lstrip()
+
+        if not is_hindi(src) or is_english(tgt):
+            patho += 1
+            continue
 
         if prev != src and best_tgt:
             # time to add to outfile
@@ -41,6 +71,6 @@ with open('phrase-table', encoding='utf-8') as f:
 outfile.close()
 print(count)
 
-
+print('Number of pathological phrases = ', patho)
 
 

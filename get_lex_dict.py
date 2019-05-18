@@ -11,10 +11,7 @@ def is_char_in_lang_range(c):
     lb = 2304
     ub = 2431
     ic = ord(c)
-    if ic >= lb and ic <= ub:
-        return True
-    else:
-        return False
+    return ic >= lb and ic <= ub
 
 def is_lang(word):
     '''Checks if a word is in Devanagari alphabets.
